@@ -3,16 +3,24 @@ public class CostePersonal {
 	static float CosteDelPersonal(Trabajador trabajadores[]) {
 		float costeFinal = 0;
 		Trabajador trabajador;
-		for (int i = 0; y < trabajadores.length; i++) {
+		float precioHoraExtra = 20;
+		for (int i = 0; i < trabajadores.length; i++) {
 			trabajador = trabajadores[i];
-			if (trabajador.getTipoTrabajador() == Trabajador.DIRECTOR|| trabajador.getTipoTrabajador() == Trabajador.SUBDIRECTOR) {
+			if (puestoTrabajador (trabajador)) {
 					costeFinal += trabajador.getNomina();
 			}
 			else
 			{
-				costeFinal += trabajador.getNomina() + (trabajador.getHorasExtras() * 20);
+				costeFinal += trabajador.getNomina() + (trabajador.getHorasExtras() * precioHoraExtra);
 			}
 		}
 		return costeFinal;
+	}
+	static boolean puestoTrabajador (Trabajador trabajador) {
+
+		if (trabajador.getTipoTrabajador() == Trabajador.DIRECTOR|| trabajador.getTipoTrabajador() == Trabajador.SUBDIRECTOR)
+			return true;
+		else
+			return false;
 	}
 }
